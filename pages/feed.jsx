@@ -1,4 +1,5 @@
 import Layout from "../components/Layout";
+import Post from "../components/post/Post";
 import PostBox from "../components/post/PostBox";
 
 const Feed = () => {
@@ -6,6 +7,7 @@ const Feed = () => {
     <Layout>
       <div>
         <PostBox />
+        <Post />
       </div>
     </Layout>
   );

@@ -7,6 +7,7 @@ const SignupImage = () => {
       width="889.07556"
       height="459.37952"
       viewBox="0 0 889.07556 459.37952"
+      className="w-full h-full"
     >
       <title>welcome_cats</title>
       <ellipse

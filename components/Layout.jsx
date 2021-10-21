@@ -8,8 +8,12 @@ const Layout = ({ title, children }) => {
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar />
-      <main className="container mx-auto">{children}</main>
+      <div className="min-h-screen bg-bluegray-900  text-bluegray-100 font-roboto">
+        <header>
+          <NavBar />
+        </header>
+        <main>{children}</main>
+      </div>
     </>
   );
 };

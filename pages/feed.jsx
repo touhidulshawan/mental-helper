@@ -5,7 +5,7 @@ import PostBox from "../components/post/PostBox";
 const Feed = () => {
   return (
     <Layout>
-      <div>
+      <div className="grid">
         <PostBox />
         <Post />
       </div>

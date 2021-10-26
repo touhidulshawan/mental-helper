@@ -9,7 +9,7 @@ const SignUp = () => {
         <div className="p-10  rounded-lg">
           <SignupImage />
         </div>
-        <div className="bg-bluegray-800 text-bluegray-200 w-9/12 p-8 shadow-lg rounded-lg border-2 border-bluegray-700 justify-self-center">
+        <div className="bg-bluegray-800 text-bluegray-200 w-10/12 p-8 shadow-lg rounded-lg border-2 border-bluegray-700 justify-self-center">
           <h2 className="text-center text-4xl tracking-widest mb-8 capitalize border-b border-bluegray-600 pb-5 text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 via-yellow-200 bg-pink-600 font-righteous ">
             Create an Account
           </h2>
@@ -70,7 +70,7 @@ const SignUp = () => {
                 Sign Up
               </button>
 
-              <small className="text-sm tracking-wider text-teal-400">
+              <small className="text-sm tracking-wider text-teal-400 ">
                 Already Have Account?{" "}
                 <Link href="/signin">
                   <a className="text-yellow-300 p-2 uppercase focus:outline-sky">

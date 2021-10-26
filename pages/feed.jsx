@@ -6,8 +6,13 @@ const Feed = () => {
   return (
     <Layout>
       <div className="grid">
-        <PostBox />
-        <Post />
+        <div className="mb-6 ">
+          <PostBox />
+        </div>
+        <div className="flex flex-col justify-center items-center gap-10 bg-gradient-to-r from-fuchsia-600 via-pink-500 to-red-500 py-4 ">
+          <Post />
+          <Post />
+        </div>
       </div>
     </Layout>
   );

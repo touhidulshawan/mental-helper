@@ -7,6 +7,7 @@ const SigninImage = () => {
       width="1010.89168"
       height="727.28412"
       viewBox="0 0 1010.89168 727.28412"
+      className="w-full h-full"
     >
       <title>unlock</title>
       <path

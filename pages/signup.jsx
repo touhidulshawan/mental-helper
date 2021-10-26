@@ -4,11 +4,11 @@ import SignupImage from "../components/images/SignupImage";
 const SignUp = () => {
   return (
     <Layout>
-      <div className="grid grid-cols-2 gap-10 items-center mt-24 p-10">
+      <div className="grid grid-cols-2 gap-10 items-center">
         <div className="p-10  rounded-lg">
           <SignupImage />
         </div>
-        <div className="bg-bluegray-800 text-bluegray-200 w-11/12 p-8 shadow-lg rounded-lg border-2 border-bluegray-700 -mt-14 mb-5">
+        <div className="bg-bluegray-800 text-bluegray-200 w-9/12 p-8 shadow-lg rounded-lg border-2 border-bluegray-700 justify-self-center">
           <h2 className="text-center text-4xl tracking-widest mb-8 capitalize border-b border-bluegray-600 pb-5 text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 via-yellow-200 bg-pink-600 font-righteous ">
             Create an Account
           </h2>

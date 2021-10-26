@@ -8,7 +8,7 @@ const Layout = ({ title, children }) => {
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="min-h-screen bg-bluegray-900  text-bluegray-100 font-roboto">
+      <div className="min-h-screen bg-bluegray-900 grid text-bluegray-100 font-roboto">
         <header>
           <NavBar />
         </header>

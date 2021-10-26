@@ -3,19 +3,42 @@ import SigninImage from "../components/images/SigninImage";
 const SignIn = () => {
   return (
     <Layout>
-      <div>
-        <SigninImage />
-        <form>
-          <h2>Please Sign In</h2>
-          <div>
-            <label htmlFor="email">Your Email</label>
-            <input type="email" name="email" id="email" />
+      <div className="grid grid-cols-2 gap-10  items-center">
+        <div className="rounded-md">
+          <SigninImage />
+        </div>
+        <form className="bg-bluegray-800 text-bluegray-200 w-8/12 p-8 shadow-lg rounded-lg border-2 border-bluegray-700 justify-self-center">
+          <h2 className="text-center text-4xl tracking-widest mb-8 capitalize border-b border-bluegray-600 pb-5 text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 via-yellow-200 bg-pink-600 font-righteous ">
+            Please Sign In
+          </h2>
+          <div className="flex flex-col items-start justify-center">
+            <label htmlFor="email" className="text-sm text-bluegray-400">
+              Your Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              className="my-3 py-2 px-3 block w-full bg-bluegray-800 border-2 border-bluegray-700 rounded-sm focus:outline-sky focus:border-transparent"
+            />
           </div>
-          <div>
-            <label htmlFor="password">Your Password</label>
-            <input type="password" name="password" id="password" />
+          <div className="flex flex-col items-start justify-center">
+            <label htmlFor="password" className="text-sm text-bluegray-400">
+              Your Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              className="my-3 py-2 px-3 block w-full bg-bluegray-800 border-2 border-bluegray-700 rounded-sm focus:outline-sky focus:border-transparent"
+            />
           </div>
-          <button type="submit">Sign In</button>
+          <button
+            type="submit"
+            className="bg-fuchsia-700 text-fuchsia-200 py-2 px-8 text-lg leading-relaxed text-center uppercase tracking-wider shadow-xl rounded-md my-2 hover:bg-teal-700 hover:text-teal-200 transition-all duration-300 focus:outline-sky"
+          >
+            Sign In
+          </button>
         </form>
       </div>
     </Layout>

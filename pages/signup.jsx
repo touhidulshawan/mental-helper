@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import SignupImage from "../components/images/SignupImage";
+import Link from "next/link";
 
 const SignUp = () => {
   return (
@@ -60,12 +61,24 @@ const SignUp = () => {
                 id="againuserpassword"
               />
             </div>
-            <button
-              className="bg-fuchsia-700 text-fuchsia-200 py-2 px-8 text-lg leading-relaxed text-center uppercase tracking-wider shadow-xl rounded-md my-2 hover:bg-teal-700 hover:text-teal-200 transition-all duration-300 focus:outline-sky"
-              type="submit"
-            >
-              Sign Up
-            </button>
+
+            <div className="flex justify-between items-center">
+              <button
+                className="bg-fuchsia-700 text-fuchsia-200 py-2 px-8 text-lg leading-relaxed text-center uppercase tracking-wider shadow-xl rounded-md my-2 hover:bg-teal-700 hover:text-teal-200 transition-all duration-300 focus:outline-sky"
+                type="submit"
+              >
+                Sign Up
+              </button>
+
+              <small className="text-sm tracking-wider text-teal-400">
+                Already Have Account?{" "}
+                <Link href="/signin">
+                  <a className="text-yellow-300 p-2 uppercase focus:outline-sky">
+                    Sign In
+                  </a>
+                </Link>
+              </small>
+            </div>
           </form>
         </div>
       </div>

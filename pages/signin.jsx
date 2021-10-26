@@ -1,5 +1,7 @@
 import Layout from "../components/Layout";
 import SigninImage from "../components/images/SigninImage";
+import Link from "next/link";
+
 const SignIn = () => {
   return (
     <Layout>
@@ -33,12 +35,21 @@ const SignIn = () => {
               className="my-3 py-2 px-3 block w-full bg-bluegray-800 border-2 border-bluegray-700 rounded-sm focus:outline-sky focus:border-transparent"
             />
           </div>
-          <button
-            type="submit"
-            className="bg-fuchsia-700 text-fuchsia-200 py-2 px-8 text-lg leading-relaxed text-center uppercase tracking-wider shadow-xl rounded-md my-2 hover:bg-teal-700 hover:text-teal-200 transition-all duration-300 focus:outline-sky"
-          >
-            Sign In
-          </button>
+          <div className="flex justify-between items-center">
+            <button
+              type="submit"
+              className="bg-fuchsia-700 text-fuchsia-200 py-2 px-8 text-lg leading-relaxed text-center uppercase tracking-wider shadow-xl rounded-md my-2 hover:bg-teal-700 hover:text-teal-200 transition-all duration-300 focus:outline-sky"
+            >
+              Sign In
+            </button>
+            <small className="text-sm tracking-wider text-teal-400">
+              <Link href="/signup">
+                <a className="text-yellow-300 uppercase focus:outline-sky p-2">
+                  Create an account
+                </a>
+              </Link>
+            </small>
+          </div>
         </form>
       </div>
     </Layout>

@@ -6,7 +6,7 @@ import HomeIcon from "../images/HomeIcon";
 
 const NavBar = () => {
   return (
-    <nav className="h-16 flex justify-between items-center py-3 px-8 shadow-md border-b-2 border-bluegray-700 bg-bluegray-900 ">
+    <nav className="h-16 flex justify-between items-center py-3 px-8 shadow-md border-b-2 border-bluegray-800 bg-bluegray-900 ">
       <div className="w-16 h-16 relative ">
         <Link href="/">
           <a>

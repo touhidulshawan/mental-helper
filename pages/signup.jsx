@@ -1,11 +1,38 @@
+import { useState } from "react";
 import Layout from "../components/Layout";
 import SignupImage from "../components/images/SignupImage";
 import Link from "next/link";
+import { useAuth } from "../context/AuthContext";
 
 const SignUp = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const { signup } = useAuth();
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+
+    if (password !== confirmPassword) {
+      return setError("Password does not match");
+    }
+    try {
+      signup(email, password);
+    } catch (error) {
+      console.log(error);
+    }
+    setName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+  };
+
   return (
-    <Layout>
-      <div className="grid grid-cols-2 gap-10 items-center">
+    <Layout title="Sign Up">
+      <div className="grid grid-cols-2 gap-5  p-6 md:mt-8">
         <div className="p-10  rounded-lg">
           <SignupImage />
         </div>
@@ -13,7 +40,7 @@ const SignUp = () => {
           <h2 className="text-center text-4xl tracking-widest mb-8 capitalize border-b border-bluegray-600 pb-5 text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 via-yellow-200 bg-pink-600 font-righteous ">
             Create an Account
           </h2>
-          <form className="w-12/12">
+          <form className="w-12/12" onSubmit={handleSubmit}>
             <div className="flex flex-col items-start justify-center">
               <label htmlFor="name" className="text-sm text-bluegray-400">
                 Your Name
@@ -23,6 +50,8 @@ const SignUp = () => {
                 type="text"
                 name="personName"
                 id="name"
+                value={name}
+                onChange={(evt) => setName(evt.target.value)}
               />
             </div>
             <div className="flex flex-col items-start justify-center">
@@ -34,6 +63,8 @@ const SignUp = () => {
                 type="email"
                 name="username"
                 id="username"
+                value={email}
+                onChange={(evt) => setEmail(evt.target.value)}
               />
             </div>
             <div className="flex flex-col items-start justify-center">
@@ -45,6 +76,8 @@ const SignUp = () => {
                 type="password"
                 name="userpassword"
                 id="userpassword"
+                value={password}
+                onChange={(evt) => setPassword(evt.target.value)}
               />
             </div>
             <div className="flex flex-col items-start justify-center">
@@ -59,6 +92,8 @@ const SignUp = () => {
                 type="password"
                 name="againuserpassword"
                 id="againuserpassword"
+                value={confirmPassword}
+                onChange={(evt) => setConfirmPassword(evt.target.value)}
               />
             </div>
 

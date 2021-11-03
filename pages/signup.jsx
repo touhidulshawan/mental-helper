@@ -8,7 +8,7 @@ import { registrationSchema } from "../schema/FormSchema";
 import { useAuth } from "../context/AuthContext";
 
 const SignUp = () => {
-  const { signup, currentUser } = useAuth();
+  const { signup } = useAuth();
 
   const {
     register,

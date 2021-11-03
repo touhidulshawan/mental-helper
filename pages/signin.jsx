@@ -4,8 +4,11 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../schema/FormSchema";
+import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 
 const SignIn = () => {
+  const [error, setError] = useState("");
   const {
     register,
     handleSubmit,
@@ -14,8 +17,11 @@ const SignIn = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const submitForm = (data) => {
-    console.log(data);
+  const { login } = useAuth();
+
+  const submitForm = async (data) => {
+    const message = await login(data);
+    setError(message);
   };
 
   return (
@@ -31,6 +37,11 @@ const SignIn = () => {
           <h2 className="text-center text-4xl tracking-widest mb-8 capitalize border-b border-bluegray-600 pb-5 text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 via-yellow-200 bg-pink-600 font-righteous ">
             Please Sign In
           </h2>
+          {error && (
+            <div className="bg-red-700 text-red-200 py-2 px-1 my-2 rounded-md">
+              {error}
+            </div>
+          )}
           <div className="flex flex-col items-start justify-center">
             <label htmlFor="email" className="text-sm text-bluegray-400">
               Your Email

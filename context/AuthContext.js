@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { auth } from "../utils/firebase";
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -17,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // signup
   const signup = async (user) => {
     const { firstName, lastName, email, password } = user;
     try {
@@ -24,8 +27,21 @@ export const AuthProvider = ({ children }) => {
       await updateProfile(auth.currentUser, {
         displayName: `${firstName} ${lastName}`,
       });
+      router.push("/feed");
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  // login
+  const router = useRouter();
+
+  const login = async ({ email, password }) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push("/feed");
+    } catch (error) {
+      return "Credentials mismatch or User does not exits!";
     }
   };
 
@@ -49,6 +65,7 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     signup,
+    login,
     currentUser,
     logout,
   };

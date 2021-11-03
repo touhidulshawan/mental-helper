@@ -15,7 +15,6 @@ const UserProfile = () => {
     const getBio = ref(database, "bio/" + currentUser.uid);
     onValue(getBio, (snapshot) => {
       const data = snapshot.val();
-      console.log(data);
       setBio(data.bio);
     });
   }, [currentUser.uid]);

@@ -3,7 +3,7 @@ import Image from "next/image";
 import SignInIcon from "../images/SignInIcon";
 import SigninIcon from "../images/SignInIcon";
 import HomeIcon from "../images/HomeIcon";
-import EditIcon from "../images/EditIcon";
+import UserIcon from "../images/UserIcon";
 import { useAuth } from "../../context/AuthContext";
 
 const NavBar = () => {
@@ -45,10 +45,10 @@ const NavBar = () => {
         </li>
         {currentUser && (
           <li>
-            <Link href="/edit-profile">
+            <Link href="/profile">
               <a className="flex justify-center items-center gap-3 uppercase  text-sm tracking-wider font-bold focus:outline-sky p-1 text-bluegray-300 text-center">
-                <EditIcon />
-                <span>Edit Profile</span>
+                <UserIcon />
+                <span>Profile</span>
               </a>
             </Link>
           </li>

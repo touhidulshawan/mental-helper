@@ -3,6 +3,7 @@ import Image from "next/image";
 import SignInIcon from "../images/SignInIcon";
 import SigninIcon from "../images/SignInIcon";
 import HomeIcon from "../images/HomeIcon";
+import EditIcon from "../images/EditIcon";
 import { useAuth } from "../../context/AuthContext";
 
 const NavBar = () => {
@@ -26,13 +27,32 @@ const NavBar = () => {
       </div>
       <ul className="flex items-center gap-5">
         <li>
-          <Link href="/">
-            <a className="uppercase text-sm tracking-wider  font-bold focus:outline-sky p-1 flex gap-3 justify-center items-center text-bluegray-300  text-center">
-              <HomeIcon />
-              <span>Home</span>
-            </a>
-          </Link>
+          {currentUser ? (
+            <Link href="/feed">
+              <a className="uppercase text-sm tracking-wider  font-bold focus:outline-sky p-1 flex gap-3 justify-center items-center text-bluegray-300  text-center">
+                <HomeIcon />
+                <span>Feed</span>
+              </a>
+            </Link>
+          ) : (
+            <Link href="/">
+              <a className="uppercase text-sm tracking-wider  font-bold focus:outline-sky p-1 flex gap-3 justify-center items-center text-bluegray-300  text-center">
+                <HomeIcon />
+                <span>Home</span>
+              </a>
+            </Link>
+          )}
         </li>
+        {currentUser && (
+          <li>
+            <Link href="/edit-profile">
+              <a className="flex justify-center items-center gap-3 uppercase  text-sm tracking-wider font-bold focus:outline-sky p-1 text-bluegray-300 text-center">
+                <EditIcon />
+                <span>Edit Profile</span>
+              </a>
+            </Link>
+          </li>
+        )}
         <li>
           {currentUser ? (
             <Link href="/">

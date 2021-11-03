@@ -56,9 +56,12 @@ const NavBar = () => {
         <li>
           {currentUser ? (
             <Link href="/">
-              <a className="flex justify-center items-center gap-3 uppercase  text-sm tracking-wider font-bold focus:outline-sky p-1 text-bluegray-300 text-center">
+              <a
+                className="flex justify-center items-center gap-3 uppercase  text-sm tracking-wider font-bold focus:outline-sky p-1 text-bluegray-300 text-center"
+                onClick={logout}
+              >
                 <SignInIcon />
-                <span onClick={logout}>Logout</span>
+                <span>Logout</span>
               </a>
             </Link>
           ) : (

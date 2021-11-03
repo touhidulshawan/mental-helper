@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
+  updatePassword,
 } from "firebase/auth";
 
 const AuthContext = React.createContext();
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     const { firstName, lastName, email, password } = user;
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(auth.currentUser, {
+      updateProfile(auth.currentUser, {
         displayName: `${firstName} ${lastName}`,
       });
       router.push("/feed");
@@ -45,9 +46,20 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // update Profile
+  const updateUserPassword = async ({ password }) => {
+    try {
+      await updatePassword(auth.currentUser, password);
+      router.push("/profile");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const logout = async () => {
     try {
       await signOut(auth);
+      router.push("/");
     } catch (error) {}
   };
 
@@ -67,6 +79,7 @@ export const AuthProvider = ({ children }) => {
     signup,
     login,
     currentUser,
+    updateUserPassword,
     logout,
   };
   return (

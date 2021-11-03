@@ -87,6 +87,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.15.4":
+  version: 7.16.0
+  resolution: "@babel/runtime@npm:7.16.0"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: bfbca3ec52c94de262a3932473bceeead1a088b50194108fa1ff6eda447333f0f7d43fa4e9c5937c6e5d45bf838da8480905d0a227589b257c51f954ea060bac
+  languageName: node
+  linkType: hard
+
 "@babel/types@npm:7.15.0":
   version: 7.15.0
   resolution: "@babel/types@npm:7.15.0"
@@ -760,6 +769,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookform/resolvers@npm:^2.8.3":
+  version: 2.8.3
+  resolution: "@hookform/resolvers@npm:2.8.3"
+  peerDependencies:
+    react-hook-form: ^7.0.0
+  checksum: fc79f2f54b37bd0af6bf7dacb6bb798c1ad6dc8f0a202a419121df430100293939e376ea8678159c3a8be55960620f77822ca241ea2141d627e69b0bb653c371
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.5.0":
   version: 0.5.0
   resolution: "@humanwhocodes/config-array@npm:0.5.0"
@@ -1093,6 +1111,13 @@ __metadata:
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
   checksum: e60b153664572116dfea673c5bda7778dbff150498f44f998e34b5886d8afc47f16799280e4b6e241c0472aef1bc36add771c569c68fc5125fc2ae519a3eb9ac
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:^4.14.175":
+  version: 4.14.176
+  resolution: "@types/lodash@npm:4.14.176"
+  checksum: 9e949704dfffab60365b5cdca0477926af6eabe82c64b7be8f74b3a117bb373d58371be962c2b159dd0cf8fad49a7dcacc748564aea4ce6b6883c197a6f0bfa8
   languageName: node
   linkType: hard
 
@@ -2404,13 +2429,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dialog-polyfill@npm:^0.4.7":
-  version: 0.4.10
-  resolution: "dialog-polyfill@npm:0.4.10"
-  checksum: f5f472542a059ade7f1f19bc7bf7acf19210a1d89f9dda99cc67027f58709307c8c8faff9e4217cf9ef4d06ef0be3bf9885d48a7304e0f5b01b4f36c0e4570e1
-  languageName: node
-  linkType: hard
-
 "dicer@npm:^0.3.0":
   version: 0.3.0
   resolution: "dicer@npm:0.3.0"
@@ -3171,18 +3189,6 @@ __metadata:
     "@firebase/storage-compat": 0.1.4
     "@firebase/util": 1.4.0
   checksum: 13165a67e3f0ddd610df605416daea5f2d519f7edc419e68d2cb7d8e51b767f748c37b008400f45a9a7071489754071a0026aebe1dbb6b4148f20af83db9eb2f
-  languageName: node
-  linkType: hard
-
-"firebaseui@npm:^4.8.0":
-  version: 4.8.1
-  resolution: "firebaseui@npm:4.8.1"
-  dependencies:
-    dialog-polyfill: ^0.4.7
-    material-design-lite: ^1.2.0
-  peerDependencies:
-    firebase: ">=8.2.4"
-  checksum: 3e700f8a9a6aa615f6ae68f924260cfa9e90f86467399f6522e1b9a56deab2d0f25932870c2372da6b7fb03eea9483e3d2a0efec85b34023ef79fee87def1448
   languageName: node
   linkType: hard
 
@@ -4472,6 +4478,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash-es@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash-es@npm:4.17.21"
+  checksum: 05cbffad6e2adbb331a4e16fbd826e7faee403a1a04873b82b42c0f22090f280839f85b95393f487c1303c8a3d2a010048bf06151a6cbe03eee4d388fb0a12d2
+  languageName: node
+  linkType: hard
+
 "lodash.camelcase@npm:^4.3.0":
   version: 4.3.0
   resolution: "lodash.camelcase@npm:4.3.0"
@@ -4649,13 +4662,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"material-design-lite@npm:^1.2.0":
-  version: 1.3.0
-  resolution: "material-design-lite@npm:1.3.0"
-  checksum: f5d45f84408feb11c6e6da2389b69f73cbef3954b9259eced1f25070ad6e299f59782ca7e63e37635bdc177aea69a58aaa7b03fb9f74070a9dd6a44364d6bc9a
-  languageName: node
-  linkType: hard
-
 "md5.js@npm:^1.3.4":
   version: 1.3.5
   resolution: "md5.js@npm:1.3.5"
@@ -4671,6 +4677,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mental-helper@workspace:."
   dependencies:
+    "@hookform/resolvers": ^2.8.3
     autoprefixer: latest
     eslint: 7.32.0
     eslint-config-next: 11.1.2
@@ -4682,8 +4689,9 @@ __metadata:
     react: 17.0.2
     react-dom: 17.0.2
     react-firebase-hooks: ^4.0.0
-    react-firebaseui: ^5.0.2
+    react-hook-form: ^7.18.1
     tailwindcss: latest
+    yup: ^0.32.11
   languageName: unknown
   linkType: soft
 
@@ -4882,6 +4890,13 @@ __metadata:
   version: 2.1.3
   resolution: "ms@npm:2.1.3"
   checksum: aa92de608021b242401676e35cfa5aa42dd70cbdc082b916da7fb925c542173e36bce97ea3e804923fe92c0ad991434e4a38327e15a1b5b5f945d66df615ae6d
+  languageName: node
+  linkType: hard
+
+"nanoclone@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "nanoclone@npm:0.2.1"
+  checksum: 96b2954e22f70561f41e20d69856266c65583c2a441dae108f1dc71b716785d2c8038dac5f1d5e92b117aed3825f526b53139e2e5d6e6db8a77cfa35b3b8bf40
   languageName: node
   linkType: hard
 
@@ -5730,6 +5745,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"property-expr@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "property-expr@npm:2.0.4"
+  checksum: 7ac142e189f0feef685f327f582efe13bfbc24a0b6e2328afdb38520bc140caa5f91dfa9529f2539b4468d85dc83a593e1ef0e0f7401b525368bb634b323bf54
+  languageName: node
+  linkType: hard
+
 "proto3-json-serializer@npm:^0.1.1":
   version: 0.1.5
   resolution: "proto3-json-serializer@npm:0.1.5"
@@ -5936,15 +5958,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-firebaseui@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "react-firebaseui@npm:5.0.2"
-  dependencies:
-    firebaseui: ^4.8.0
+"react-hook-form@npm:^7.18.1":
+  version: 7.18.1
+  resolution: "react-hook-form@npm:7.18.1"
   peerDependencies:
-    firebase: ^8.2.4
-    react: ">=15 <=17"
-  checksum: 00b055c5db65259c6430732ac5d687115a1f678f348e5d8ef74815bac05a431d754cd4c62de63d135578ca5f2485e9d43fc20cf3ef60a9c52a0c9e6a661b561e
+    react: ^16.8.0 || ^17
+  checksum: 77c49d2d5aed7491b6abba46b6f1166d8305503b8b072804cee0902ce0922e1a01b895b4dc057ee3ecf5847938609955b468e41c7f753dc316d6441f6f53ad5a
   languageName: node
   linkType: hard
 
@@ -6984,6 +7003,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"toposort@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "toposort@npm:2.0.2"
+  checksum: d64c74b570391c9432873f48e231b439ee56bc49f7cb9780b505cfdf5cb832f808d0bae072515d93834dd6bceca5bb34448b5b4b408335e4d4716eaf68195dcb
+  languageName: node
+  linkType: hard
+
 "tr46@npm:^1.0.1":
   version: 1.0.1
   resolution: "tr46@npm:1.0.1"
@@ -7485,5 +7511,20 @@ resolve@^2.0.0-next.3:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"yup@npm:^0.32.11":
+  version: 0.32.11
+  resolution: "yup@npm:0.32.11"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    "@types/lodash": ^4.14.175
+    lodash: ^4.17.21
+    lodash-es: ^4.17.21
+    nanoclone: ^0.2.1
+    property-expr: ^2.0.4
+    toposort: ^2.0.2
+  checksum: 43a16786b47cc910fed4891cebdd89df6d6e31702e9462e8f969c73eac88551ce750732608012201ea6b93802c8847cb0aa27b5d57370640f4ecf30f9f97d4b0
   languageName: node
   linkType: hard

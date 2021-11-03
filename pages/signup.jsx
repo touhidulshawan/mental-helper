@@ -1,34 +1,48 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import Layout from "../components/Layout";
 import SignupImage from "../components/images/SignupImage";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { registrationSchema } from "../schema/FormSchema";
 import { useAuth } from "../context/AuthContext";
 
 const SignUp = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-
   const { signup } = useAuth();
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-
-    if (password !== confirmPassword) {
-      return setError("Password does not match");
-    }
-    try {
-      signup(email, password);
-    } catch (error) {
-      console.log(error);
-    }
-    setName("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
+  const defaultValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitSuccessful, errors },
+  } = useForm({
+    resolver: yupResolver(registrationSchema),
+  });
+
+  const submitForm = (data) => {
+    console.log(data);
+    // if (password !== confirmPassword) {
+    //   return setError("Password does not match");
+    // }
+    // try {
+    //   signup(email, password);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset({ defaultValues });
+    }
+  }, [isSubmitSuccessful, defaultValues, reset]);
 
   return (
     <Layout title="Sign Up">
@@ -40,19 +54,39 @@ const SignUp = () => {
           <h2 className="text-center text-4xl tracking-widest mb-8 capitalize border-b border-bluegray-600 pb-5 text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 via-yellow-200 bg-pink-600 font-righteous ">
             Create an Account
           </h2>
-          <form className="w-12/12" onSubmit={handleSubmit}>
-            <div className="flex flex-col items-start justify-center">
-              <label htmlFor="name" className="text-sm text-bluegray-400">
-                Your Name
-              </label>
-              <input
-                className="my-3 py-2 px-3 block w-full bg-bluegray-800 border-2 border-bluegray-700 rounded-sm focus:outline-sky focus:border-transparent"
-                type="text"
-                name="personName"
-                id="name"
-                value={name}
-                onChange={(evt) => setName(evt.target.value)}
-              />
+          <form className="w-12/12" onSubmit={handleSubmit(submitForm)}>
+            <div className="grid grid-cols-2 gap-5">
+              <div className="flex flex-col items-start justify-center">
+                <label
+                  htmlFor="firstName"
+                  className="text-sm text-bluegray-400"
+                >
+                  First Name
+                </label>
+                <input
+                  className="my-3 py-2 px-3 block w-full bg-bluegray-800 border-2 border-bluegray-700 rounded-sm focus:outline-sky focus:border-transparent"
+                  type="text"
+                  id="firstName"
+                  {...register("firstName")}
+                />
+                <small className="text-red-500 py-1">
+                  {errors.firstName?.message}
+                </small>
+              </div>
+              <div className="flex flex-col items-start justify-center">
+                <label htmlFor="lastName" className="text-sm text-bluegray-400">
+                  Last Name
+                </label>
+                <input
+                  className="my-3 py-2 px-3 block w-full bg-bluegray-800 border-2 border-bluegray-700 rounded-sm focus:outline-sky focus:border-transparent"
+                  type="text"
+                  {...register("lastName")}
+                  id="lastName"
+                />
+                <small className="text-red-500 py-1">
+                  {errors.lastName?.message}
+                </small>
+              </div>
             </div>
             <div className="flex flex-col items-start justify-center">
               <label htmlFor="email" className="text-sm text-bluegray-400">
@@ -60,12 +94,12 @@ const SignUp = () => {
               </label>
               <input
                 className="my-3 py-2 px-3 block bg-bluegray-800 border-2 border-bluegray-700 rounded-sm w-full focus:outline-sky focus:border-transparent"
-                type="email"
-                name="username"
-                id="username"
-                value={email}
-                onChange={(evt) => setEmail(evt.target.value)}
+                {...register("email")}
+                id="email"
               />
+              <small className="text-red-500 py-1">
+                {errors.email?.message}
+              </small>
             </div>
             <div className="flex flex-col items-start justify-center">
               <label htmlFor="password" className="text-sm text-bluegray-400">
@@ -74,15 +108,16 @@ const SignUp = () => {
               <input
                 className="my-3 py-2 px-3 block bg-bluegray-800 border-2 border-bluegray-700 rounded-sm w-full focus:outline-sky focus:border-transparent"
                 type="password"
-                name="userpassword"
-                id="userpassword"
-                value={password}
-                onChange={(evt) => setPassword(evt.target.value)}
+                id="password"
+                {...register("password")}
               />
+              <small className="text-red-500 py-1">
+                {errors.password?.message}
+              </small>
             </div>
             <div className="flex flex-col items-start justify-center">
               <label
-                htmlFor="againpassword"
+                htmlFor="confirmPassword"
                 className="text-sm text-bluegray-400"
               >
                 Confirm Password
@@ -90,11 +125,12 @@ const SignUp = () => {
               <input
                 className="my-3 py-2 px-3 block bg-bluegray-800 border-2 border-bluegray-700 rounded-sm w-full focus:outline-sky focus:border-transparent"
                 type="password"
-                name="againuserpassword"
-                id="againuserpassword"
-                value={confirmPassword}
-                onChange={(evt) => setConfirmPassword(evt.target.value)}
+                id="confirmPassword"
+                {...register("confirmPassword")}
               />
+              <small className="text-red-500 py-1">
+                {errors.confirmPassword && "Password should match!"}
+              </small>
             </div>
 
             <div className="flex justify-between items-center">

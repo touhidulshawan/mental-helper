@@ -8,15 +8,8 @@ import { registrationSchema } from "../schema/FormSchema";
 import { useAuth } from "../context/AuthContext";
 
 const SignUp = () => {
-  const { signup } = useAuth();
+  const { signup, currentUser } = useAuth();
 
-  const defaultValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  };
   const {
     register,
     handleSubmit,
@@ -27,22 +20,21 @@ const SignUp = () => {
   });
 
   const submitForm = (data) => {
-    console.log(data);
-    // if (password !== confirmPassword) {
-    //   return setError("Password does not match");
-    // }
-    // try {
-    //   signup(email, password);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    signup(data);
   };
 
   useEffect(() => {
+    const defaultValues = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    };
     if (isSubmitSuccessful) {
       reset({ defaultValues });
     }
-  }, [isSubmitSuccessful, defaultValues, reset]);
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <Layout title="Sign Up">

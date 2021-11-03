@@ -3,8 +3,10 @@ import Image from "next/image";
 import SignInIcon from "../images/SignInIcon";
 import SigninIcon from "../images/SignInIcon";
 import HomeIcon from "../images/HomeIcon";
+import { useAuth } from "../../context/AuthContext";
 
 const NavBar = () => {
+  const { currentUser, logout } = useAuth();
   return (
     <nav className=" flex justify-between items-center   shadow-md border-b-2 border-bluegray-800 bg-bluegray-900 px-8 ">
       <div className="w-16 h-16 relative ">
@@ -32,12 +34,21 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/signin">
-            <a className="flex justify-center items-center gap-3 uppercase  text-sm tracking-wider font-bold focus:outline-sky p-1 text-bluegray-300 text-center">
-              <SigninIcon />
-              <span> Login</span>
-            </a>
-          </Link>
+          {currentUser ? (
+            <Link href="/">
+              <a className="flex justify-center items-center gap-3 uppercase  text-sm tracking-wider font-bold focus:outline-sky p-1 text-bluegray-300 text-center">
+                <SignInIcon />
+                <span onClick={logout}>Logout</span>
+              </a>
+            </Link>
+          ) : (
+            <Link href="/signin">
+              <a className="flex justify-center items-center gap-3 uppercase  text-sm tracking-wider font-bold focus:outline-sky p-1 text-bluegray-300 text-center">
+                <SigninIcon />
+                <span>Login</span>
+              </a>
+            </Link>
+          )}
         </li>
       </ul>
     </nav>

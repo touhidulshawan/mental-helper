@@ -1,15 +1,33 @@
 import Layout from "../components/Layout";
 import SigninImage from "../components/images/SigninImage";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "../schema/FormSchema";
 
 const SignIn = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
+
+  const submitForm = (data) => {
+    console.log(data);
+  };
+
   return (
     <Layout>
       <div className="grid grid-cols-2 gap-10  items-center">
         <div className="rounded-md">
           <SigninImage />
         </div>
-        <form className="bg-bluegray-800 text-bluegray-200 w-8/12 p-8 shadow-lg rounded-lg border-2 border-bluegray-700 justify-self-center">
+        <form
+          className="bg-bluegray-800 text-bluegray-200 w-8/12 p-8 shadow-lg rounded-lg border-2 border-bluegray-700 justify-self-center"
+          onSubmit={handleSubmit(submitForm)}
+        >
           <h2 className="text-center text-4xl tracking-widest mb-8 capitalize border-b border-bluegray-600 pb-5 text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 via-yellow-200 bg-pink-600 font-righteous ">
             Please Sign In
           </h2>
@@ -19,10 +37,11 @@ const SignIn = () => {
             </label>
             <input
               type="email"
-              name="email"
               id="email"
               className="my-3 py-2 px-3 block w-full bg-bluegray-800 border-2 border-bluegray-700 rounded-sm focus:outline-sky focus:border-transparent"
+              {...register("email")}
             />
+            <small className="text-red-500 p-1">{errors.email?.message}</small>
           </div>
           <div className="flex flex-col items-start justify-center">
             <label htmlFor="password" className="text-sm text-bluegray-400">
@@ -30,10 +49,13 @@ const SignIn = () => {
             </label>
             <input
               type="password"
-              name="password"
               id="password"
               className="my-3 py-2 px-3 block w-full bg-bluegray-800 border-2 border-bluegray-700 rounded-sm focus:outline-sky focus:border-transparent"
+              {...register("password")}
             />
+            <small className="text-red-500 py-1">
+              {errors.password?.message}
+            </small>
           </div>
           <div className="flex justify-between items-center">
             <button

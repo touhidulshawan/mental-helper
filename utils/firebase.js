@@ -1,5 +1,6 @@
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
 import { initializeApp, getApp, getApps } from "firebase/app";
 
 let app;
@@ -20,6 +21,7 @@ if (getApps().length) {
 }
 const auth = getAuth(app);
 const db = getFirestore();
+const database = getDatabase(app);
 
-export { auth, db };
+export { auth, db, database };
 export default app;

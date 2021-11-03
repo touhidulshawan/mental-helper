@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { auth } from "../utils/firebase";
+import { auth, database } from "../utils/firebase";
+import { ref, set } from "firebase/database";
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
@@ -47,9 +48,15 @@ export const AuthProvider = ({ children }) => {
   };
 
   // update Profile
-  const updateUserPassword = async ({ password }) => {
+  const updateUserProfile = async ({ firstName, lastName, bio, password }) => {
     try {
       await updatePassword(auth.currentUser, password);
+      updateProfile(auth.currentUser, {
+        displayName: `${firstName} ${lastName}`,
+      });
+      set(ref(database, "bio/" + auth.currentUser.uid), {
+        bio,
+      });
       router.push("/profile");
     } catch (error) {
       console.log(error);
@@ -79,7 +86,7 @@ export const AuthProvider = ({ children }) => {
     signup,
     login,
     currentUser,
-    updateUserPassword,
+    updateUserProfile,
     logout,
   };
   return (

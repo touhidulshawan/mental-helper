@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import EditIcon from "../images/EditIcon";
 import PostCard from "../post/PostCard";
@@ -15,7 +14,9 @@ const UserProfile = () => {
     const getBio = ref(database, "bio/" + currentUser.uid);
     onValue(getBio, (snapshot) => {
       const data = snapshot.val();
-      setBio(data.bio);
+      if (data !== null) {
+        setBio(data.bio);
+      }
     });
   }, [currentUser.uid]);
 

@@ -20,6 +20,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   // signup
   const signup = async (user) => {
@@ -36,7 +37,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   // login
-  const router = useRouter();
 
   const login = async ({ email, password }) => {
     try {
@@ -48,25 +48,42 @@ export const AuthProvider = ({ children }) => {
   };
 
   // update Profile
-  const updateUserProfile = async ({ firstName, lastName, bio, password }) => {
+  const updateUserProfile = async ({ firstName, lastName, bio }) => {
+    let isUpdateFinished = false;
     try {
-      await updatePassword(auth.currentUser, password);
-      updateProfile(auth.currentUser, {
-        displayName: `${firstName} ${lastName}`,
-      });
-      set(ref(database, "bio/" + auth.currentUser.uid), {
-        bio,
-      });
-      router.push("/profile");
+      const fullName = `${firstName} ${lastName}`;
+      if (auth.currentUser.displayName !== fullName) {
+        updateProfile(auth.currentUser, {
+          displayName: `${firstName} ${lastName}`,
+        });
+        isUpdateFinished = true;
+      }
+      if (bio !== "") {
+        set(ref(database, "bio/" + auth.currentUser.uid), {
+          bio,
+        });
+        isUpdateFinished = true;
+      }
+      return isUpdateFinished;
     } catch (error) {
-      console.log(error);
+      return isUpdateFinished;
     }
+  };
+
+  // update Password
+
+  const updateUserPassword = async ({ password }) => {
+    try {
+      if (password !== "") {
+        await updatePassword(auth.currentUser, password);
+      }
+    } catch (err) {}
   };
 
   const logout = async () => {
     try {
-      await signOut(auth);
       router.push("/");
+      await signOut(auth);
     } catch (error) {}
   };
 
@@ -87,6 +104,7 @@ export const AuthProvider = ({ children }) => {
     login,
     currentUser,
     updateUserProfile,
+    updateUserPassword,
     logout,
   };
   return (

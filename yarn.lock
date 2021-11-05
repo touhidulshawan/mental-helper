@@ -3458,6 +3458,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"goober@npm:^2.0.35":
+  version: 2.0.41
+  resolution: "goober@npm:2.0.41"
+  peerDependencies:
+    csstype: ^2.6.2
+  checksum: ef1e4c7491633972497dfd28ef5641154d30f494455101456ba8ed70902e6127167bc2e9a258504a3bad9a3dd354805c9290353c84065af30cb6fcbeecb37894
+  languageName: node
+  linkType: hard
+
 "google-auth-library@npm:^7.0.0, google-auth-library@npm:^7.6.1, google-auth-library@npm:^7.9.2":
   version: 7.10.1
   resolution: "google-auth-library@npm:7.10.1"
@@ -4690,6 +4699,7 @@ __metadata:
     react-dom: 17.0.2
     react-firebase-hooks: ^4.0.0
     react-hook-form: ^7.18.1
+    react-hot-toast: ^2.1.1
     tailwindcss: latest
     yup: ^0.32.11
   languageName: unknown
@@ -5964,6 +5974,18 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17
   checksum: 77c49d2d5aed7491b6abba46b6f1166d8305503b8b072804cee0902ce0922e1a01b895b4dc057ee3ecf5847938609955b468e41c7f753dc316d6441f6f53ad5a
+  languageName: node
+  linkType: hard
+
+"react-hot-toast@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "react-hot-toast@npm:2.1.1"
+  dependencies:
+    goober: ^2.0.35
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: 029d375d50a937143d21d71c11d4ad00dbb58a6ca12a50378a7bd80fe294821def6f7a5b9a53404d31230d1fed5246453a73b9f90bc85811036e53b802ad790f
   languageName: node
   linkType: hard
 

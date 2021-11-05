@@ -6,9 +6,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../schema/FormSchema";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
+import Modal from "../components/Modal";
 
 const SignIn = () => {
   const [error, setError] = useState("");
+  const [openModal, setOpenModal] = useState(false);
   const {
     register,
     handleSubmit,
@@ -22,6 +24,10 @@ const SignIn = () => {
   const submitForm = async (data) => {
     const message = await login(data);
     setError(message);
+  };
+
+  const toggleModal = () => {
+    setOpenModal(!openModal);
   };
 
   return (
@@ -68,6 +74,13 @@ const SignIn = () => {
               {errors.password?.message}
             </small>
           </div>
+
+          <small
+            className="text-red-400 cursor-pointer mb-2  block p-1"
+            onClick={() => setOpenModal(true)}
+          >
+            Forgot Password?
+          </small>
           <div className="flex justify-between items-center">
             <button
               type="submit"
@@ -85,6 +98,9 @@ const SignIn = () => {
           </div>
         </form>
       </div>
+      {openModal ? (
+        <Modal isOpen={openModal} handleModal={toggleModal} />
+      ) : null}
     </Layout>
   );
 };

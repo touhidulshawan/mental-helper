@@ -8,7 +8,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-  updatePassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 const AuthContext = React.createContext();
@@ -70,14 +70,15 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // update Password
+  // reset Password
 
-  const updateUserPassword = async ({ password }) => {
+  const resetPassword = async ({ email }) => {
     try {
-      if (password !== "") {
-        await updatePassword(auth.currentUser, password);
-      }
-    } catch (err) {}
+      await sendPasswordResetEmail(auth, email);
+      return true;
+    } catch (err) {
+      return false;
+    }
   };
 
   const logout = async () => {
@@ -104,7 +105,7 @@ export const AuthProvider = ({ children }) => {
     login,
     currentUser,
     updateUserProfile,
-    updateUserPassword,
+    resetPassword,
     logout,
   };
   return (

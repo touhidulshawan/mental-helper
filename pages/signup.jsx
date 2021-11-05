@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registrationSchema } from "../schema/FormSchema";
-import { useAuth } from "../context/AuthContext";
+import { withPublic } from "../utils/routes";
 
-const SignUp = () => {
-  const { signup } = useAuth();
+const SignUp = ({ auth }) => {
+  const { signup } = auth;
 
   const {
     register,
@@ -149,4 +149,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default withPublic(SignUp);

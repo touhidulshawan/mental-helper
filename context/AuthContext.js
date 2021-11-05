@@ -83,8 +83,8 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      router.push("/");
       await signOut(auth);
+      router.replace("/");
     } catch (error) {}
   };
 

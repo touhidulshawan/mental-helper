@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../schema/FormSchema";
-import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import Modal from "../components/Modal";
+import { withPublic } from "../utils/routes";
 
-const SignIn = () => {
+const SignIn = ({ auth }) => {
   const [error, setError] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const {
@@ -19,7 +19,7 @@ const SignIn = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const { login } = useAuth();
+  const { login } = auth;
 
   const submitForm = async (data) => {
     const message = await login(data);
@@ -105,4 +105,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default withPublic(SignIn);

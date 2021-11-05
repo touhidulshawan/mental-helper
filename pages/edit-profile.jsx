@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import ProfileEditForm from "../components/profile/ProfileEdit";
+import { withProtected } from "../utils/routes";
 
 const EditProfile = () => {
   return (
@@ -8,4 +9,4 @@ const EditProfile = () => {
     </Layout>
   );
 };
-export default EditProfile;
+export default withProtected(EditProfile);

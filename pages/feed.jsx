@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 import Post from "../components/post/Post";
 import PostBox from "../components/post/PostBox";
+import { withProtected } from "../utils/routes";
 
 const Feed = () => {
   return (
@@ -18,4 +19,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default withProtected(Feed);

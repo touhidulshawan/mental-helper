@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import Bio from "../components/bio/Bio";
 import HeroImage from "../components/images/HeroImage";
 import Link from "next/link";
+import { withPublic } from "../utils/routes";
 
 const Home = () => {
   return (
@@ -22,4 +23,4 @@ const Home = () => {
     </Layout>
   );
 };
-export default Home;
+export default withPublic(Home);

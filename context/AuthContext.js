@@ -9,6 +9,7 @@ import {
   signOut,
   updateProfile,
   sendPasswordResetEmail,
+  sendEmailVerification,
 } from "firebase/auth";
 
 const AuthContext = React.createContext();
@@ -81,6 +82,20 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // email verification
+
+  const emailVerification = async () => {
+    let isSend = false;
+    try {
+      await sendEmailVerification(auth.currentUser);
+      isSend = true;
+      return isSend;
+    } catch (error) {
+      isSend = false;
+      return isSend;
+    }
+  };
+
   const logout = async () => {
     try {
       await signOut(auth);
@@ -107,6 +122,7 @@ export const AuthProvider = ({ children }) => {
     updateUserProfile,
     resetPassword,
     logout,
+    emailVerification,
   };
   return (
     <AuthContext.Provider value={value}>

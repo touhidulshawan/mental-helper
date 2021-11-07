@@ -2,10 +2,10 @@ import Layout from "../components/Layout";
 import UserProfile from "../components/profile/UserProfile";
 import { withProtected } from "../utils/routes";
 
-const Profile = () => {
+const Profile = ({ auth }) => {
   return (
     <Layout>
-      <UserProfile />
+      <UserProfile {...auth} />
     </Layout>
   );
 };

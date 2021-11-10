@@ -13,7 +13,13 @@ const Post = (props) => {
           </h4>
           <Discussion />
         </div>
-        <PostCard />
+        {props.comments && props.comments.length !== 0 ? (
+          <PostCard />
+        ) : (
+          <p className="py-3 text-center block bg-red-800 text-red-100 tracking-widest">
+            No comments found
+          </p>
+        )}
       </div>
     </div>
   );

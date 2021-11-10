@@ -8,9 +8,8 @@ import VerifiedIcon from "../images/verifiedIcon";
 import ClickToVerify from "../ClickToVerify";
 import { Toaster } from "react-hot-toast";
 
-const UserProfile = ({ currentUser }) => {
+const UserProfile = ({ currentUser, posts }) => {
   const [bio, setBio] = useState(null);
-
   useEffect(() => {
     const getBio = ref(database, "bio/" + currentUser.uid);
     onValue(getBio, (snapshot) => {
@@ -56,7 +55,9 @@ const UserProfile = ({ currentUser }) => {
         </div>
       </div>
       <div className="max-w-3xl mx-auto">
-        <PostCard />
+        {posts.length !== 0
+          ? posts.map((post) => <PostCard key={post.id} {...post} />)
+          : null}
       </div>
       <Toaster position="top-right" reverseOrder={false} />
     </div>

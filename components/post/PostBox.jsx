@@ -4,11 +4,13 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { Toaster } from "react-hot-toast";
 import ClickToVerify from "../ClickToVerify";
 import { v4 as uuidv4 } from "uuid";
+import { useRouter } from "next/router";
 
 const PostBox = ({ currentUser, isVerifiedUser }) => {
   const [postText, setPostText] = useState();
 
   const { uid, displayName } = currentUser;
+  const router = useRouter();
 
   // submit the post
 
@@ -21,8 +23,10 @@ const PostBox = ({ currentUser, isVerifiedUser }) => {
       postTime: new Date().toDateString(),
       uid,
       displayName,
+      comments: [],
     });
     setPostText("");
+    router.reload();
   };
 
   return (
@@ -47,6 +51,7 @@ const PostBox = ({ currentUser, isVerifiedUser }) => {
         cols="45"
         rows="20"
         placeholder="Write your story here...."
+        value={postText}
         required
         disabled={!isVerifiedUser}
         onChange={(evt) => setPostText(evt.target.value)}

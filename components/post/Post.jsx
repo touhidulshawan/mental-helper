@@ -1,10 +1,10 @@
 import PostCard from "./PostCard";
 import Discussion from "./Discussion";
 
-const Post = () => {
+const Post = (props) => {
   return (
     <div className=" rounded-xl w-6/12 shadow-xl mb-2">
-      <PostCard />
+      <PostCard {...props} />
       {/* discussion panel */}
       <div className=" bg-bluegray-900">
         <div className="p-5">

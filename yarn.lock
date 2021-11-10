@@ -4701,6 +4701,7 @@ __metadata:
     react-hook-form: ^7.18.1
     react-hot-toast: ^2.1.1
     tailwindcss: latest
+    uuid: ^8.3.2
     yup: ^0.32.11
   languageName: unknown
   linkType: soft
@@ -7263,7 +7264,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"uuid@npm:^8.0.0":
+"uuid@npm:^8.0.0, uuid@npm:^8.3.2":
   version: 8.3.2
   resolution: "uuid@npm:8.3.2"
   bin:

@@ -1,6 +1,6 @@
 const PostCard = ({ post, uid, displayName, postTime }) => {
   return (
-    <div className="bg-bluegray-800 w-full justify-self-center shadow-lg border-2 border-bluegray-700 rounded-tr-xl rounded-tl-xl">
+    <div className="bg-bluegray-800 w-full justify-self-center shadow-lg border-2 border-bluegray-700 ">
       <div>
         <div className="flex items-center gap-5 p-4 border-b-2 border-bluegray-700">
           <div>

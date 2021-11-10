@@ -3,7 +3,7 @@ import Discussion from "./Discussion";
 
 const Post = (props) => {
   return (
-    <div className=" rounded-xl w-6/12 shadow-xl mb-2">
+    <div className=" bg-bluegray-800  w-6/12 shadow-xl mb-2 rounded">
       <PostCard {...props} />
       {/* discussion panel */}
       <div className=" bg-bluegray-900">
@@ -16,7 +16,7 @@ const Post = (props) => {
         {props.comments && props.comments.length !== 0 ? (
           <PostCard />
         ) : (
-          <p className="py-3 text-center block bg-red-800 text-red-100 tracking-widest">
+          <p className="py-3 text-center block bg-bluegray-600 text-bluegray-100 tracking-widest">
             No comments found
           </p>
         )}

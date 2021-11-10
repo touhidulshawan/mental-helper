@@ -54,7 +54,7 @@ const UserProfile = ({ currentUser, posts }) => {
           </Link>
         </div>
       </div>
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-xl mx-auto grid gap-4">
         {posts.length !== 0
           ? posts.map((post) => <PostCard key={post.id} {...post} />)
           : null}

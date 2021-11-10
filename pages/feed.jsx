@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import Post from "../components/post/Post";
 import PostBox from "../components/post/PostBox";
 import { withProtected } from "../utils/routes";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import { useEffect, useState } from "react";
 
@@ -10,7 +10,12 @@ const Feed = ({ auth, allPosts }) => {
   const [posts, setPosts] = useState([]);
 
   const fetchData = async () => {
-    const querySnapshot = await getDocs(collection(db, "posts"));
+    const q = query(
+      collection(db, "posts"),
+      orderBy("createdTime", "desc"),
+      limit(100)
+    );
+    const querySnapshot = await getDocs(q);
     let allPosts = [];
     if (!querySnapshot.empty) {
       querySnapshot.forEach((doc) => {

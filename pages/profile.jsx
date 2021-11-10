@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import UserProfile from "../components/profile/UserProfile";
 import { withProtected } from "../utils/routes";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, limit, query } from "firebase/firestore";
 import { db } from "../utils/firebase";
 
 const Profile = ({ auth }) => {
@@ -12,7 +12,12 @@ const Profile = ({ auth }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, "posts"));
+      const q = query(
+        collection(db, "posts"),
+        orderBy("createdTime", "desc"),
+        limit(50)
+      );
+      const querySnapshot = await getDocs(q);
       let allPosts = [];
       if (!querySnapshot.empty) {
         querySnapshot.forEach((doc) => {

@@ -32,8 +32,6 @@ const Feed = ({ auth, allPosts }) => {
 
   const { currentUser } = auth;
 
-  console.log(posts);
-
   return (
     <Layout>
       <div className="grid">

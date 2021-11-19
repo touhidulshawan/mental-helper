@@ -1,6 +1,7 @@
 import PostCard from "./PostCard";
 import Discussion from "./Discussion";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const Post = (props) => {
   const [getCurrentID, setCurrentID] = useState(null);
@@ -28,7 +29,7 @@ const Post = (props) => {
               All Comments
             </h2>
             {post.comments.map((comment) => (
-              <PostCard {...comment} />
+              <PostCard key={uuidv4()} {...comment} />
             ))}
           </div>
         ) : (

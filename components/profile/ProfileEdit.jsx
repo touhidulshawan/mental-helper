@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { editPasswordSchema, editProfileSchema } from "../../schema/FormSchema";
+import { editProfileSchema } from "../../schema/FormSchema";
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";

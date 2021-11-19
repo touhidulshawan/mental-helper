@@ -8,10 +8,7 @@ const Post = (props) => {
     setCurrentID(id);
   };
   return props.posts.map((post) => (
-    <div
-      key={post.id}
-      className=" bg-bluegray-800  w-6/12 shadow-xl mb-2 rounded"
-    >
+    <div key={post.id} className=" bg-bluegray-800  w-6/12 shadow-2xl  mb-2">
       <PostCard {...post} />
       {/* discussion panel */}
       <div className=" bg-bluegray-900">
@@ -26,7 +23,14 @@ const Post = (props) => {
           />
         </div>
         {post.comments && post.comments.length !== 0 ? (
-          post.comments.map((comment) => <PostCard {...comment} />)
+          <div className="p-4 grid gap-3 bg-bluegray-700">
+            <h2 className="text-center font-righteous tracking-widest text-bluegray-300">
+              All Comments
+            </h2>
+            {post.comments.map((comment) => (
+              <PostCard {...comment} />
+            ))}
+          </div>
         ) : (
           <p className="py-3 text-center block bg-bluegray-600 text-bluegray-100 tracking-widest">
             No comments found

@@ -1,4 +1,4 @@
-const PostCard = ({ post, uid, displayName, postTime }) => {
+const PostCard = ({ post, displayName, postTime }) => {
   return (
     <div className="bg-bluegray-800 w-full justify-self-center shadow-lg border-2 border-bluegray-700 ">
       <div>

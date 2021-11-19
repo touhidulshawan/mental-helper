@@ -19,10 +19,14 @@ const Post = (props) => {
           <h4 className="mb-2 text-bluegray-500 capitalize">
             Give your opinion
           </h4>
-          <Discussion getID={() => getID(post.id)} postID={getCurrentID} />
+          <Discussion
+            posts={props.posts}
+            getID={() => getID(post.id)}
+            postID={getCurrentID}
+          />
         </div>
         {post.comments && post.comments.length !== 0 ? (
-          <PostCard />
+          post.comments.map((comment) => <PostCard {...comment} />)
         ) : (
           <p className="py-3 text-center block bg-bluegray-600 text-bluegray-100 tracking-widest">
             No comments found

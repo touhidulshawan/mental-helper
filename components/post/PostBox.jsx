@@ -25,7 +25,7 @@ const PostBox = ({ currentUser, isVerifiedUser }) => {
       displayName,
       comments: [],
     });
-    setPostText("");
+    etPostText("");
     router.reload();
   };
 
@@ -60,7 +60,11 @@ const PostBox = ({ currentUser, isVerifiedUser }) => {
       <button
         type="submit"
         disabled={!isVerifiedUser}
-        className="bg-teal-800 text-lg py-3 px-8   rounded-lg tracking-wider text-teal-200 shadow-md border-b-8 border-fuchsia-500  focus:outline-sky"
+        className={`${
+          isVerifiedUser
+            ? "bg-teal-800 text-lg  text-teal-200  border-fuchsia-500  "
+            : "cursor-not-allowed bg-red-100 text-red-400 border-red-500"
+        } py-3 px-8   rounded-lg tracking-wider shadow-md border-b-8 focus:outline-sky`}
       >
         Post Now
       </button>

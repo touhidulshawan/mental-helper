@@ -25,7 +25,7 @@ const PostBox = ({ currentUser, isVerifiedUser }) => {
       displayName,
       comments: [],
     });
-    etPostText("");
+    setPostText("");
     router.reload();
   };
 

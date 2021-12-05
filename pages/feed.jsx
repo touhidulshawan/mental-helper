@@ -42,11 +42,7 @@ const Feed = ({ auth, allPosts }) => {
           />
         </div>
         <div className="flex flex-col justify-center items-center gap-10 bg-gradient-to-r from-fuchsia-600 via-pink-500 to-red-500 py-4 ">
-          {posts.length === 0 ? (
-            <h1>No Post Found</h1>
-          ) : (
-            posts.map((post) => <Post key={post.id} {...post} />)
-          )}
+          {posts.length === 0 ? <h1>No Post Found</h1> : <Post posts={posts} />}
         </div>
       </div>
     </Layout>

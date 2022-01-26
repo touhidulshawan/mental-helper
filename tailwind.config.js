@@ -1,10 +1,10 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  // purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -15,7 +15,7 @@ module.exports = {
         sky: ["2px dashed #38BDF8", "1px"],
       },
       colors: {
-        bluegray: colors.blueGray,
+        bluegray: colors.slate,
         teal: colors.teal,
         fuchsia: colors.fuchsia,
       },
